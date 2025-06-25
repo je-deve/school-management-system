@@ -23,7 +23,7 @@ export default function DashboardLayout({
             </div>
 
             {/* المحتوى الرئيسي - يسار */}
-            <div className="w-[86%] md:w-[92%] lg:w-[84%] xl:w-[86%] bg-[#FAFAFA] dark:bg-gray-900 overflow-scroll min-h-screen">
+            <div className="w-[86%] md:w-[92%] lg:w-[84%] xl:w-[86%] bg-gray-100 dark:bg-gray-900 overflow-scroll min-h-screen">
                 <Navbar />
                 {children}
             </div>

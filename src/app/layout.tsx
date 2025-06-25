@@ -8,6 +8,7 @@ const inter = Cairo({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "قدرات الأجيال",
   description: "Next.js School Management System",
+  
 };
 
 export default function RootLayout({
@@ -16,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ar">
       <body className={inter.className}><ThemeProvider> {children}</ThemeProvider>
 
       
