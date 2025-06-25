@@ -26,7 +26,7 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 - Responsive design with Tailwind CSS
 - Role-based dashboard (Admin, Teacher, Student, Parent)
 - Modern UI with Lucide React icons
-- Arabic font support with Cairo font family
+- Arabic language support 
 
 ## Tech Stack
 
