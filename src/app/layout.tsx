@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Cairo } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/lib/theme";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Cairo({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Lama Dev School Management Dashboard",
+  title: "قدرات الأجيال",
   description: "Next.js School Management System",
 };
 
@@ -16,7 +17,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}><ThemeProvider> {children}</ThemeProvider>
+
+      
+        </body>
     </html>
   );
 }
