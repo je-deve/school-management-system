@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# School Management System
+
+This is a [Next.js](https://nextjs.org) project for managing school operations including students, teachers, and educational activities.
 
 ## Getting Started
 
@@ -18,7 +20,36 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Features
+
+- Dark/Light mode toggle
+- Responsive design with Tailwind CSS
+- Role-based dashboard (Admin, Teacher, Student, Parent)
+- Modern UI with Lucide React icons
+- Arabic font support with Cairo font family
+
+## Tech Stack
+
+- **Next.js 15** - React framework
+- **TypeScript** - Type safety
+- **Tailwind CSS** - Styling
+- **Lucide React** - Icons
+- **React Context** - Theme management
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── layout.tsx          # Root layout with theme provider
+│   └── page.tsx            # Home page
+├── components/
+│   ├── Menu.tsx            # Sidebar navigation
+│   ├── Navbar.tsx          # Top navigation bar
+│   └── ThemeToggle.tsx     # Dark/light mode toggle
+└── lib/
+    └── theme.tsx           # Theme context and provider
+```
 
 ## Learn More
 
