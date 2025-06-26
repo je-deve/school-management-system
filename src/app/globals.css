@@ -5,3 +5,40 @@
 .dark body {
   color: white;
 }
+
+/* دعم اللغة العربية والإنجليزية */
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="ltr"] {
+  text-align: left;
+}
+
+/* انتقال سلس بين اللغات */
+html {
+  transition: direction 0.3s ease;
+}
+
+/* تحسين الخطوط */
+[dir="rtl"] {
+  font-family: 'Cairo', 'Tajawal', system-ui, -apple-system, sans-serif;
+}
+
+[dir="ltr"] {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* تخطيط Dashboard */
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+}
+
+[dir="rtl"] .dashboard-container {
+  flex-direction: row; /* القائمة يسار، المحتوى يمين */
+}
+
+[dir="ltr"] .dashboard-container {
+  flex-direction: row-reverse; /* القائمة يمين، المحتوى يسار */
+}

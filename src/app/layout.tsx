@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import { Cairo } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/lib/theme";
+import { LanguageProvider } from "@/lib/language";
 
 const inter = Cairo({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "قدرات الأجيال",
   description: "Next.js School Management System",
-  
 };
 
 export default function RootLayout({
@@ -17,11 +17,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ar">
-      <body className={inter.className}><ThemeProvider> {children}</ThemeProvider>
-
-      
-        </body>
+    <html lang="en">
+      <body className={inter.className}>
+        <ThemeProvider>
+          <LanguageProvider>
+            {children}
+          </LanguageProvider>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
