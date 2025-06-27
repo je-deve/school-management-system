@@ -10,21 +10,22 @@ export default function DashboardLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    const { language, isRTL } = useLanguage()
+    const { language, isLoaded } = useLanguage()
 
     const schoolName = language === 'ar' ? 'قدرات الأجيال' : 'Abilities Generations'
 
-    return (
-        <div key={language} className="dashboard-container">
+    if (!isLoaded) {
+        return <div className="min-h-screen bg-gray-100 dark:bg-gray-900" />
+    }
 
+    return (
+        <div className="flex h-screen dashboard-container">
             {/* القائمة الجانبية */}
             <div className="w-[14%] md:w-[8%] lg:w-[16%] xl:w-[14%] p-4 overflow-scroll dark:bg-gray-800">
-                {/* شعار المدرسه */}
                 <Link href="/" className="flex items-center justify-center lg:justify-start gap-2">
                     <Image src="/logo.png" alt="logo" width={45} height={45} />
                     <span className="hidden lg:block">{schoolName}</span>
                 </Link>
-                {/* عناصر القائمة */}
                 <Menu />
             </div>
 

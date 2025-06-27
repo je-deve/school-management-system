@@ -34,8 +34,33 @@ module.exports = {
         juSkyDark: "#1E3A8A",
         juSkyLightDark: "#60A5FA",
       },
+      // إضافة دعم للاتجاهات
+      spacing: {
+        'safe-top': 'env(safe-area-inset-top)',
+        'safe-bottom': 'env(safe-area-inset-bottom)',
+        'safe-left': 'env(safe-area-inset-left)',
+        'safe-right': 'env(safe-area-inset-right)',
+      }
     },
   },
   plugins: [
+    // إضافة plugin للاتجاهات
+    function ({ addUtilities }) {
+      const newUtilities = {
+        '.rtl': {
+          direction: 'rtl',
+        },
+        '.ltr': {
+          direction: 'ltr',
+        },
+        '.flip-horizontal': {
+          transform: 'scaleX(-1)',
+        },
+        '.transition-direction': {
+          transition: 'all 0.3s ease',
+        }
+      }
+      addUtilities(newUtilities)
+    }
   ],
 }

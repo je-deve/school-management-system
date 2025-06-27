@@ -5,6 +5,7 @@ interface LanguageContextType {
   language: string
   toggleLanguage: () => void
   isRTL: boolean
+  isLoaded: boolean
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
@@ -15,27 +16,25 @@ interface LanguageProviderProps {
 
 export function LanguageProvider({ children }: LanguageProviderProps) {
   const [language, setLanguage] = useState<string>('ar')
+  const [isLoaded, setIsLoaded] = useState<boolean>(false)
 
-  // قراءة اللغة المحفوظة عند التحميل
   useEffect(() => {
     const savedLanguage = localStorage.getItem('language')
     if (savedLanguage) {
       setLanguage(savedLanguage)
     }
+    setIsLoaded(true)
   }, [])
 
   useEffect(() => {
-    // تحديث اتجاه الصفحة
+    if (!isLoaded) return
+    
     const newDirection = language === 'ar' ? 'rtl' : 'ltr'
     document.documentElement.dir = newDirection
     document.documentElement.lang = language
     
-    // إجبار إعادة تحديث التخطيط
-    document.body.style.direction = newDirection
-    
-    // حفظ اللغة في localStorage
     localStorage.setItem('language', language)
-  }, [language])
+  }, [language, isLoaded])
 
   const toggleLanguage = () => {
     setLanguage(prev => prev === 'ar' ? 'en' : 'ar')
@@ -43,8 +42,12 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
 
   const isRTL = language === 'ar'
 
+  if (!isLoaded) {
+    return <div className="min-h-screen bg-gray-100 dark:bg-gray-900" />
+  }
+
   return (
-    <LanguageContext.Provider value={{ language, toggleLanguage, isRTL }}>
+    <LanguageContext.Provider value={{ language, toggleLanguage, isRTL, isLoaded }}>
       {children}
     </LanguageContext.Provider>
   )
